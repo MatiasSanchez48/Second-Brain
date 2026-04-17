@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:second_brain/counter/counter.dart';
-import 'package:second_brain/l10n/l10n.dart';
+import 'package:second_brain/app/router/router.dart';
+import 'package:second_brain/l10n/gen/app_localizations.dart';
+import 'package:second_brain/utils/extensions/extensions.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final colorScheme = context.colorScheme;
+
+    return MaterialApp.router(
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        ),
         useMaterial3: true,
+        colorScheme: colorScheme,
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      routerConfig: router,
     );
   }
 }
